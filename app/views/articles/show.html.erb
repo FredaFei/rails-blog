@@ -30,7 +30,7 @@
     <h3>without comments ~</h3>
   <% else %>
     <div class="comment-panes">
-      <div class="comment-title">评论 （<%= pluralize(@article.comments.count, "条") %>）</div>
+      <div class="comment-title">评论 （<%= pluralize(@article.comments.count, "comment") %>）</div>
       <%= render 'comments/comment', obj: @article %>
     </div>
   <% end %>

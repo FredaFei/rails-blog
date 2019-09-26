@@ -3,6 +3,8 @@ class CommentsController < ApplicationController
     @article = Article.find(params[:article_id])
     if session[:user_id]
       @comment = @article.comments.create(comment_params)
+      # @user = User.find(session[:user_id])
+      # @comment.user = @user
       if @article.save
         flash[:success] = "Comments was successfully created"
       else
