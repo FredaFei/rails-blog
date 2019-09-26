@@ -1,0 +1,22 @@
+<%= render 'shared/errors', obj: @article.comments.build %>
+
+<div class="col-xs-12 comment-form">
+  <%= form_with(model: [@article, @article.comments.build], html: {class: "form-horizontal", role: "form"}, local: true) do |form| %>
+    <div class="form-group">
+      <div class="control-label col-sm-2">
+        <%= form.label :comment %>
+      </div>
+      <div class="col-sm-8">
+        <%= form.text_area :comment, rows: 5, class: "form-control", placeholder: "Body of comment" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <%= form.submit class: 'btn btn-primary btn-large' %>
+      </div>
+    </div>
+  <% end %>
+  <div class="col-sm-10 col-xs-offset-2">
+    [ <%= link_to 'Cancel request and Return to Articles Listing', articles_path %> ]
+  </div>
+</div>

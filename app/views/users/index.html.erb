@@ -1,0 +1,24 @@
+<h1 align="center">All Users</h1>
+<div align="center">
+  <% if @users.empty? %>
+    <h3>without user ~</h3>
+  <% else %>
+    <%= will_paginate %>
+    <% @users.each do |user| %>
+      <ul class="listing">
+        <div class="row">
+          <div class="well col-md-4 col-md-offset-4">
+            <li><%= link_to gravatar_for(user), user_path(user) %></li>
+            <li class="article-title"><%= link_to user.username, user_path(user) %></li>
+            <li><small><%= pluralize(user.articles.count, "article") if user.articles %></small></li>
+            <li>
+              <%= link_to "Edit", edit_user_path(user), class: "btn btn-xs btn-primary" %>
+              <%= link_to "Delete", user_path(user), method: :delete, data: {confirm: "Are you sure you want to delete this user?"}, class: "btn btn-xs btn-danger" %>
+            </li>
+          </div>
+        </div>
+      </ul>
+    <% end %>
+    <%= will_paginate %>
+  <% end %>
+</div>

@@ -1,0 +1,16 @@
+<% obj.comments.each do |comment| %>
+  <div class="comment-item">
+    <div class="comment-body">
+      <h4><%= comment.comment %> say:</h4>
+      <div class="comment"><%= comment.comment %></div>
+      <div class="comment-meta-details">
+        <small>创建时间: <%= comment.created_at.localtime.to_s(:db) %></small>
+      </div>
+    </div>
+    <% if logged_in? %>
+      <div class="comment-actions">
+        <%= link_to "Delete", [comment.article, comment], method: :delete, data: {confirm: "Are you sure you want to delete this article?"}, class: "btn btn-xs btn-danger" %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
